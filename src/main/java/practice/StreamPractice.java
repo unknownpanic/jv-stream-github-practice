@@ -23,7 +23,7 @@ public class StreamPractice {
                 .filter(n -> n % 2 == 0)
                 .min(Integer::compareTo)
                 .orElseThrow(() ->
-                        new RuntimeException("Can't get min value from list: <" + numbers + ">"));
+                        new RuntimeException("Can't get min value from list:" + numbers));
     }
 
     /**
@@ -83,7 +83,7 @@ public class StreamPractice {
      */
     public List<String> getCatsNames(List<Person> peopleList, int femaleAge) {
         return peopleList.stream().filter(p -> p.getSex() == Person.Sex.WOMAN
-                && p.getAge() > femaleAge)
+                && p.getAge() >= femaleAge)
                 .flatMap(p -> p.getCats().stream())
                 .map(Cat::getName)
                 .collect(Collectors.toList());
